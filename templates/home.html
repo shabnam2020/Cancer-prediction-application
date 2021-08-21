@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancer Awareness App</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/style.min.css') }}"
+    />
+  </head>
+  <style>
+    .form-control::placeholder {
+      font-size: 13px;
+    }
+  </style>
+  <body style="background: #fcfcfc">
+    <div id="wrapper">
+      <header class="header header-full">
+        <nav class="d-flex justify-content-end pr-3">
+          <ul class="menu_list">
+            <li>
+              <a
+                href=""
+                class="btn btn-custom bg-blue text-white font-open-sans mr-3"
+                >Predict</a
+              >
+            </li>
+            <li>
+              <form method="post" action="/predict">
+                <button
+                  type="submit"
+                  class="btn btn-custom bg-blue-border text-blue font-open-sans"
+                  value="Logout"
+                  name="Logout"
+                >
+                  Logout
+                </button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div class="container-fluid pt-5">
+          <div class="row">
+            <div class="col-md-5 no-gutters">
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="information-container">
+                    <div class="card information-container-card">
+                      <div class="card-body">
+                        <div class="card-hearder">
+                          <h5 class="card-title pb-3 font-bold">
+                            Cancer Detection
+                          </h5>
+                        </div>
+                        <form method="post" action="/predict">
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Radius</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Radius"
+                                name="radius_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Texture</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Texture"
+                                name="texture_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Perimeter</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Perimeter"
+                                name="perimeter_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Area</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Area"
+                                name="area_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Smoothnes</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Smoothness"
+                                name="smoothness_mean"
+                              />
+                            </div>
+                          </div>
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Compactness</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Compactness"
+                                name="compactness_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concavity</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concavity"
+                                name="concavity_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concave Points</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concave Points"
+                                name="concave points_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Symmetry</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Symmetry"
+                                name="symmetry_mean"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Fractal Dimension</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Fractal Dimension"
+                                name="fractal_dimension_mean"
+                              />
+                            </div>
+                          </div>
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Radius SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Radius (standard error)"
+                                name="radius_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Texture SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Texture (standard error)"
+                                name="texture_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Perimeter SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Perimeter (standard error)"
+                                name="perimeter_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Area SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Area (standard error)"
+                                name="area_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Smoothness SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Smoothness (standard error)"
+                                name="smoothness_se"
+                              />
+                            </div>
+                          </div>
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Compactness SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Compactness (standard error)"
+                                name="compactness_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concavity SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concavity (standard error)"
+                                name="concavity_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concave Points SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concave Points (standard error)"
+                                name="concave points_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Symmetry SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Symmetry (standard error)"
+                                name="symmetry_se"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Fractal Dimension SE</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Fractal Dimension (standard error)"
+                                name="fractal_dimension_se"
+                              />
+                            </div>
+                          </div>
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Radius Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Radius (worst)"
+                                name="radius_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Texture Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Texture (worst)"
+                                name="texture_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Perimeter Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Perimeter (worst)"
+                                name="perimeter_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Area Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Area (worst)"
+                                name="area_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Smoothness Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Smoothnes (worst)"
+                                name="smoothness_worst"
+                              />
+                            </div>
+                          </div>
+                          <div class="page">
+                            <div class="form-group">
+                              <label for="">Mean Compactness Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Compactness (worst)"
+                                name="compactness_worst "
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concavity Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concavity (worst)"
+                                name="concavity_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Concave Points Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Concave Points (worst)"
+                                name="concave_points_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Symmetry Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Symmetry (worst)"
+                                name="symmetry_worst"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label for="">Mean Fractal Dimension Worst</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Mean Fractal Dimension (worst)"
+                                name="fractal_dimension_worst"
+                              />
+                            </div>
+                          </div>
+                          <div
+                            class="form-navigation d-flex justify-content-end"
+                          >
+                            <button
+                              type="button"
+                              class="
+                                btn btn-custom
+                                bg-blue
+                                text-white
+                                font-open-sans
+                              "
+                              id="previous"
+                              onclick="nextPrev(-1)"
+                            >
+                              Previous
+                            </button>
+                            <button
+                              type="button"
+                              class="
+                                btn btn-custom
+                                bg-blue-border
+                                text-blue
+                                font-open-sans
+                              "
+                              id="next"
+                              onclick="nextPrev(1)"
+                              name="submit"
+                              value="Submit"
+                            >
+                              Next
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 ribbon d-none d-sm-none d-md-block">
+              <div class="profile_detail">
+                <div class="card profile_detail_card">
+                  <div
+                    class="
+                      card-body
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      flex-column
+                    "
+                  >
+                    <div class="img-rounded-container mb-3">
+                      <img src="./img/avatar.png" alt="" />
+                    </div>
+
+                    <h4 class="font-bold font-open-sans">Doctor</h4>
+                    <p>{{data}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Predictated Class:
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4 class="font-bold font-open-sans">
+              You have been diagnosed with:
+            </h4>
+            <h1
+              class="diagnosed_title font-60 text-blue font-bold font-open-sans"
+            >
+              Maligent
+            </h1>
+            <p>Please contact your nearest GP for assistance</p>
+          </div>
+          <div class="modal-footer">
+            <a href="home" class="btn btn-custom bg-blue text-white"
+              >Try again</a
+            >
+            <button
+              type="button"
+              class="btn btn-custom bg-blue-border text-blue"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for ('static', filename='/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/script.js') }}"></script>
+
+    <script>
+      let activePage = 0;
+      let previous = document.getElementById("previous");
+      let next = document.getElementById("next");
+
+      showActivePage(activePage);
+      function showActivePage(n) {
+        let page = document.querySelectorAll(".page");
+        page[n].style.display = "block";
+        if (n == 0) {
+          previous.style.display = "none";
+          previous.parentNode.classList.remove("justify-content-between");
+          previous.parentNode.classList.add("justify-content-end");
+        } else {
+          previous.parentNode.classList.remove("justify-content-end");
+          previous.parentNode.classList.add("justify-content-between");
+          previous.style.display = "block";
+        }
+        if (n == page.length - 1) {
+          next.innerHTML = "Predict";
+        } else {
+          next.innerHTML = "Next";
+        }
+      }
+
+      function nextPrev(n) {
+        let page = document.querySelectorAll(".page");
+        page[activePage].style.display = "none";
+        activePage = activePage + n;
+        if (activePage == page.length) {
+          next.removeAttribute("onclick");
+          next.setAttribute("type", "submit");
+          // debugger;
+          //return false;
+        }
+        showActivePage(activePage);
+      }
+    </script>
+  </body>
+</html>

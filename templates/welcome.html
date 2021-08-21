@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancer Awareness App</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/style.min.css') }}"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="header">
+        <nav class="d-flex justify-content-end pr-3">
+          <ul class="menu_list">
+            <li>
+              <a
+                href="login"
+                class="btn btn-custom bg-blue text-white font-open-sans mr-3"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a
+                href="login"
+                class="btn btn-custom bg-blue-border text-blue font-open-sans"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <aside class="sidebar">
+        <button class="mobile_menu_toggle">
+          <span class="icon_bar icon_bar_top"></span>
+          <span class="icon_bar icon_bar_middle"></span>
+          <span class="icon_bar icon_bar_bottom"></span>
+        </button>
+        <nav class="mobile_menu_container">
+          <ul class="menu_list">
+            <li>
+              <a
+                href="login"
+                class="btn btn-custom bg-blue text-white font-open-sans mr-3"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a
+                href="login"
+                class="btn btn-custom bg-blue-border text-blue font-open-sans"
+                >Login</a
+              >
+            </li>
+          </ul>
+          <button class="mobile_btn_close" type="button">X</button>
+        </nav>
+        <div class="banner-content">
+          <h1 class="banner-title pb-5">
+            Bravely Cancer <br />
+            Awareness <br />
+            App
+          </h1>
+
+          <ul class="step mb-5">
+            <li><span class="step-label">1</span> Register Once</li>
+            <li><span class="step-label">2</span> Login as a patient</li>
+            <li><span class="step-label">3</span> Enter information</li>
+            <li><span class="step-label">4</span> Get Predictions</li>
+          </ul>
+
+          <a href="feedback" class="btn bg-white text-blue">Give Feedback</a>
+        </div>
+      </aside>
+      <main class="main_content"></main>
+    </div>
+
+    <script src="{{ url_for('static', filename='/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/script.js' )}}"></script>
+    <script>
+      const toggleMenuOpen = document.querySelector(".mobile_menu_toggle");
+      const toggleMenuClose = document.querySelector(".mobile_btn_close");
+      const mobileMenuContainer = document.querySelector(
+        ".mobile_menu_container"
+      );
+
+      toggleMenuOpen.addEventListener("click", function (e) {
+        mobileMenuContainer.style.display = "flex";
+      });
+      toggleMenuClose.addEventListener("click", function (e) {
+        mobileMenuContainer.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancer Awareness App</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/style.min.css') }}"
+    />
+  </head>
+  <style>
+    .form-control::placeholder {
+      font-size: 13px;
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    body {
+      overflow: visible;
+    }
+    .feedbackcontainer {
+      background: url("{{ url_for ('static', filename='/img/feedback.jpg') }}");
+      background-size: cover;
+      width: 100%;
+    }
+  </style>
+  <body style="background: #fcfcfc">
+    <div id="wrapper">
+      <header class="header header-full">
+        <nav class="d-flex justify-content-end pr-3">
+          <ul class="menu_list">
+            <li>
+              <a
+                href=""
+                class="btn btn-custom bg-blue text-white font-open-sans mr-3"
+                >Predict</a
+              >
+            </li>
+            <li>
+              <a
+                href="login"
+                class="btn btn-custom bg-blue-border text-blue font-open-sans"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="inner_banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 inner_banner_con">
+              <h4 class="inner_banner_title font-open-sans">
+                Cancer Awareness Feedbacks
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row no-gutters">
+          <div class="col-md-7 feedbackcontainer pb-5">
+            <div class="row">
+              <div class="col-md-10 offset-md-1 mt-5 col-sm-px-4">
+                <div class="row">
+                  
+                  {% for value in feeds%}
+                    <div class="col-md-6 col-sm-pt-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex">
+                            <h4 class="card_username">{{ value[0] }}</h4> &ensp;
+                            <p class="text-sm"><a href="mailto:{{ value[1] }}">{{ value[1] }}</a></>
+                          </div>
+                          <p class="text-sm">{{ value[2] }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+ 
+                  <!-- <div class="col-md-6 col-sm-pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pt-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex">
+                          <h4 class="card_username">John Doe</h4>
+                        </div>
+                        <p class="text-sm">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit.?
+                        </p>
+                      </div>
+                    </div>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="card feedback_card mt-5">
+                  <div class="card-body">
+                    <div class="card-hearder">
+                      <h5 class="card-title pb-4 font-bold">Give Feedback</h5>
+                      <p>{{data}}</p>
+                    </div>
+                    <form action="/send_feedback" , method="post">
+                      <div class="form-group">
+                        <label for="">Fullname</label>
+                        <input
+                          type="text"
+                          class="form-control form-line"
+                          placeholder="Fullname"
+                          name="user"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="">Email</label>
+                        <input
+                          type="email"
+                          class="form-control form-line"
+                          placeholder="Email"
+                          name="email"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="">Message</label>
+                        <textarea
+                          type="text"
+                          class="form-control form-line"
+                          placeholder="Message"
+                          name="feedback"
+                          rows="5"
+                        ></textarea>
+                      </div>
+                      <div class="d-flex justify-content-end">
+                        <button
+                          type="submit"
+                          class="btn bg-blue-border text-blue"
+                          value="SendFeedback"
+                          name="SendFeedback"
+                        >
+                          Send Feedback
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for ('static', filename='/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/script.js') }}"></script>
+  </body>
+</html>

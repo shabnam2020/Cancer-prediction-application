@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancer Awareness App</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='/css/style.min.css') }}"
+    />
+    <style>
+      .predict_container {
+        background: url("{{ url_for ('static', filename='/img/ribbon.png') }}");
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0;
+      }
+      .predict_container::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: rgba(74, 0, 164, 0.56);
+      }
+      .predict_container_box {
+        margin: 200px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="header header-full">
+        <nav class="d-flex justify-content-end pr-3">
+          <ul class="menu_list">
+            <!-- <li>
+              <a
+                href=""
+                class="btn btn-custom bg-blue text-white font-open-sans mr-3"
+                >Predict</a
+              >
+            </li> -->
+            <li>
+              <a
+                href="{{ url_for('home') }}"
+                class="btn btn-custom bg-blue-border text-blue font-open-sans"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="predict_container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="predict_container_box">
+                <h4 class="text-white">Predictated Class</h4>
+                <h4 class="font-bold font-open-sans text-white">
+                  You have been diagnosed with:
+                </h4>
+                <h1
+                  class="
+                    diagnosed_title
+                    font-60
+                    text-white
+                    font-bold font-open-sans
+                  "
+                >
+                  {% if data[0]== "B" %} {{data[1]}} {% else %} {{data[1]}} {%
+                  endif %}
+                </h1>
+                <p class="text-white">
+                  Please contact your nearest GP for assistance
+                </p>
+                <div class="d-flex pt-5">
+                  <a
+                    href="{{ url_for('home') }}"
+                    class="
+                      btn btn-custom
+                      bg-blue
+                      text-white
+                      font-open-sans
+                      mr-5
+                    "
+                  >
+                    Try again
+                  </a>
+                  <a
+                    href="{{ url_for('home') }}"
+                    class="
+                      btn btn-custom
+                      bg-blue-border
+                      text-white
+                      font-open-sans
+                    "
+                  >
+                    Close
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="{{ url_for ('static', filename='/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='/js/script.js') }}"></script>
+  </body>
+</html>
