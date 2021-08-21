@@ -183,9 +183,9 @@ def predict():
                 # inverse transform class
                 result_class = encoder.inverse_transform(pred)[0]
                 print(pred, result_class)
-            except:
+            except Exception as e:
                 print("Unable to predict!!")
-                return render_template("error.html")
+                return render_template("error.html", data=e)
 
         elif request.form.get('Logout') == 'Logout':
             is_logged_in = False
