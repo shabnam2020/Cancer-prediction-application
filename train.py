@@ -142,6 +142,6 @@ print("#"*50, end="\n\n")
 
 # CHOSEN MODEL
 print("CHOSEN MODEL: SVM", end="\n\n")
-chosen_model = voting_model2
+chosen_model = svc_model
 joblib.dump(chosen_model, "./models/chosen_model.pkl")
 joblib.dump(label_encoder, "./models/label_encoder.pkl")
